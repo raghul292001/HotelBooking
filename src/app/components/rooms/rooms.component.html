@@ -1,0 +1,52 @@
+<p-toast></p-toast>
+<div class="row">
+    <div class="col-12 text-end">
+        <button class="btn btn-primary" (click)="addNewRoom()">Add New </button>
+        <button class="btn btn-success mx-2" (click)="saveRoom()">Bulk Update </button>
+    </div>
+</div>
+<div class="row">
+    <div class="col-12">
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Sr No</th>
+                    <th>Room Name</th>
+                    <th>Ac Available</th>
+                    <th>Capacity</th>
+                    <th>Active</th>
+                    <th>Tarrif</th>
+                    <th>Extension No</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let room of roomList;let sr = index">
+                    <td>{{sr+1}}</td>
+                    <td>
+                        <input type="text" [(ngModel)]="room.roomName" name="roomName{{sr}}" class="form-control">
+                    </td>
+                    <td>
+                        <input type="checkbox" [(ngModel)]="room.isAcAvailable"name="isAcAvailable{{sr}}">
+                    </td>
+                    <td>
+                        <input type="text" [(ngModel)]="room.roomCapacity" class="form-control" name="roomCapacity{{sr}}">
+                    </td>
+                    <td>
+                        <input type="checkbox" [(ngModel)]="room.isActive" name="isActive{{sr}}">
+                    </td>
+                    <td>
+                        <input type="number" [(ngModel)]="room.roomTariff" class="form-control" name="roomTariff{{sr}}">
+                    </td>
+                    <td>
+                        <input type="number" [(ngModel)]="room.extensionNo" class="form-control" name="extensionNo{{sr}}">
+                    </td>
+                    <td>
+                        <button class="btn btn-danger mx-2" (click)="onDelete(room.roomId)">Delete</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
